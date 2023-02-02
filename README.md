@@ -22,9 +22,11 @@ Python version: Python 3.10.8
 import torch
 
 # download pretrained weights (and optionally move to GPU)
-vocoder = Vocoder.from_pretrained(
-    "https://github.com/bshall/UniversalVocoding/releases/download/v0.2/univoc-ljspeech-7mtpaq.pt"
-).cuda()
+url = 'https://github.com/kayodeolaleye/multilang-identification/blob/main/model.pt'
+filename = wget.download(url)
+
+# Load the model weight
+model = torch.load(filename).to('cuda')
 
 doc = ...
 
