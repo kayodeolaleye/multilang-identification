@@ -76,8 +76,8 @@ def encode_labels(subset_dict):
     labels = list(subset_dict.keys())
     label_encoder.fit(labels)
     encoded_labels = label_encoder.transform(labels)
-    decoded_labels = label_encoder.inverse_transform(encoded_labels)
-    return encoded_labels, decoded_labels
+    # decoded_labels = label_encoder.inverse_transform(encoded_labels)
+    return encoded_labels, labels
 
 def get_embeddings_dict(languages, subset_dict, pretrained_model, tokenizer, max_length, sample_size=100):
     """
@@ -97,13 +97,12 @@ def plot_embeddings(embeddings, labels, save_path):
     """
     plots the embeddings using UMAP
     """
-    encoded_labels, decoded_labels = encode_labels(labels)
+    encoded_labels, labels = encode_labels(labels)
     print("Plotting embeddings...")
-    print("decoded labels: ", decoded_labels)
     reducer = umap.UMAP()
     embedding = reducer.fit_transform(embeddings)
     # plt.figure(figsize=(10, 10))
-    plt.scatter(embedding[:, 0], embedding[:, 1], c=encoded_labels, s=0.3, cmap='Spectral')
+    plt.scatter(embedding[:, 0], embedding[:, 1], c=encoded_labels)
     plt.xlim(0)
     plt.ylim(0)
     plt.savefig(os.path.join(save_path, "umap.png"))
@@ -120,8 +119,7 @@ def encode_labels(labels):
     label_encoder = LabelEncoder()
     label_encoder.fit(labels)
     encoded_labels = label_encoder.transform(labels)
-    decoded_labels = label_encoder.inverse_transform(encoded_labels)
-    return encoded_labels, decoded_labels
+    return encoded_labels, labels
 
 class LanguageIdentifierDataModule(pl.LightningDataModule):
     def __init__(self, train_data, train_labels, val_data, val_labels, test_data, test_labels, batch_size, num_workers):
@@ -256,9 +254,9 @@ def main(args):
     dev_embeddings, dev_labels = concat_embeddings(dev_embeddings_dict)
     test_embeddings, test_labels = concat_embeddings(test_embeddings_dict)
 
-    encoded_labels_train, decoded_labels_train = encode_labels(train_labels)
-    encoded_labels_dev, decoded_labels_dev = encode_labels(dev_labels)
-    encoded_labels_test, decoded_labels_test = encode_labels(test_labels)
+    encoded_labels_train, labels_train = encode_labels(train_labels)
+    encoded_labels_dev, labels_dev = encode_labels(dev_labels)
+    encoded_labels_test, labels_test = encode_labels(test_labels)
     
     # Create an instance of the model
     lang_identifier = LanguageIdentifier()
@@ -284,10 +282,12 @@ def main(args):
     results = trainer.test(ckpt_path="best", datamodule=data_module)
 
     model_save_path = 'output/LID-'+ args.model_name + '-' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    if not os.path.exists(model_save_path):
+        os.makedirs(model_save_path)
     # Save the model
-    torch.save(lang_identifier.state_dict(), model_save_path + '.pt')
+    torch.save(lang_identifier.state_dict(), os.path.join(model_save_path, 'model.pt'))
 
-    plot_embeddings(train_embeddings, encoded_labels_train, model_save_path)
+    plot_embeddings(train_embeddings, labels_train, model_save_path)
 
 if __name__ == "__main__":
     args = parse_args()
