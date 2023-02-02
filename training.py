@@ -102,9 +102,7 @@ def plot_embeddings(embeddings, labels, save_path):
     reducer = umap.UMAP()
     embedding = reducer.fit_transform(embeddings)
     # plt.figure(figsize=(10, 10))
-    plt.scatter(embedding[:, 0], embedding[:, 1], c=encoded_labels)
-    plt.xlim(0)
-    plt.ylim(0)
+    plt.scatter(embedding[:, 0], embedding[:, 1], c=encoded_labels, s=0.9, cmap="Spectral")
     plt.savefig(os.path.join(save_path, "umap.png"))
 
 def concat_embeddings(embeddings_dict):
@@ -281,7 +279,7 @@ def main(args):
     # Test with the best model
     results = trainer.test(ckpt_path="best", datamodule=data_module)
 
-    model_save_path = 'output/LID-'+ args.model_name + '-' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    model_save_path = 'outputs/LID-'+ args.model_name + '-' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     if not os.path.exists(model_save_path):
         os.makedirs(model_save_path)
     # Save the model
