@@ -29,12 +29,9 @@ vocoder = Vocoder.from_pretrained(
 doc = ...
 
 with torch.no_grad():
-    wav, sr = vocoder.generate(mel)
+    
+```    
 
-# save output
-```
-sf.write("path/to/save.wav", wav, sr)
-```
 
 ## Train from Scratch
 
