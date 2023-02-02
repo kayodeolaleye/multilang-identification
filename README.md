@@ -58,8 +58,6 @@ Add code snippets for loading the model weights and assessing performance on tes
 
 
 ### Reference
-[MINILM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers](https://arxiv.org/pdf/2002.10957.pdf)
-
-[SentenceTransformers Pre-trained Models](https://www.sbert.net/docs/pretrained_models.html)
-
-[Language Identification Dataset](https://huggingface.co/datasets/papluca/language-identification)
+1. [MINILM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers](https://arxiv.org/pdf/2002.10957.pdf)
+2. [SentenceTransformers Pre-trained Models](https://www.sbert.net/docs/pretrained_models.html)
+3. [Language Identification Dataset](https://huggingface.co/datasets/papluca/language-identification)
