@@ -5,6 +5,8 @@ HuggingFace's load_dataset method and splits it into train, validation, and test
 the pretrained SentenceTransformer model as a feature extractor to generate embeddings from the texts and 
 trains a single Linear layer on top of the embeddings for the multiclass language identification task. 
 The code also uses PyTorch Lightning for training and evaluating the model.
+
+GitHub repository: https://github.com/kayodeolaleye/multilang-identification
 """
 from datasets import load_dataset
 import random
@@ -88,9 +90,15 @@ def get_embeddings_dict(languages, subset_dict, pretrained_model, tokenizer, max
     embeddings_dict = {}
     for lang in languages:
         few_samples = random.sample(subset_dict[lang], k=sample_size)
+        dataset = SentenceBERTDataset(few_samples)
+        dataloader = torch.utils.data.DataLoader(dataset, batch_size=32, shuffle=False)
         tokens = tokenizer.batch_encode_plus(few_samples, max_length=max_length, padding="max_length", truncation=True)
         tokens = {k: torch.tensor(v).to(device) for k, v in tokens.items()}
-        embeddings_dict[lang] = pretrained_model(tokens["input_ids"]).pooler_output.cpu().numpy()
+        embeddings = pretrained_model(tokens["input_ids"]).pooler_output.cpu().numpy()
+        if lang not in embeddings_dict:
+            embeddings_dict[lang] = embeddings
+        else:
+            embeddings_dict[lang] = np.concatenate((embeddings_dict[lang], embeddings), axis=0)
     return embeddings_dict
 
 def plot_embeddings(embeddings, labels, save_path):
