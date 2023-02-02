@@ -12,29 +12,6 @@ Figure: Architecture for the approach. A pre-trained SentenceTransformer transfo
 
 Python version: Python 3.10.8
 
-## Example Usage
-
-<p align="center">
-    <a href="https://colab.research.google.com/github/kayodeolaleye/multilang-identification/blob/main/Multilang_identification.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-</p>
-
-```python
-import torch
-
-# download pretrained weights (and optionally move to GPU)
-url = 'https://github.com/kayodeolaleye/multilang-identification/blob/main/model.pt'
-filename = wget.download(url)
-
-# Load the model weight
-model = torch.load(filename).to('cuda')
-
-doc = ...
-
-with torch.no_grad():
-    
-```    
-
-
 ## Train from Scratch
 
 1. Clone the repo:
@@ -67,3 +44,26 @@ python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
   <img src="results/training_accuracy_curve.png" width="45%"/>
   <img src="results/training_loss_curve.png" width="45%"/>
 </p>
+
+### ToDo: Example Usage
+
+<p align="center">
+    <a href="https://colab.research.google.com/github/kayodeolaleye/multilang-identification/blob/main/Multilang_identification.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+</p>
+Add code snippets for loading the model weights and assessing performance on test samples
+
+```python
+# import torch
+
+# # download pretrained weights (and optionally move to GPU)
+# url = 'https://github.com/kayodeolaleye/multilang-identification/blob/main/model.pt'
+# filename = wget.download(url)
+
+# # Load the model weight
+# model = torch.load(filename).to('cuda')
+
+# doc = ...
+
+# with torch.no_grad():
+    
+```    
