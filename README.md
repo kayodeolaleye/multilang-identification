@@ -47,6 +47,7 @@ python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
 
 #### Performance on test set
 <img src="results/test_acc.png" width="100%"/>
+
 ### ToDo: Example Usage
 
 <p align="center">
