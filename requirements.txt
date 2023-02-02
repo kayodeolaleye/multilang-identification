@@ -1,0 +1,5 @@
+umap-learn>=0.5.3
+torch>=1.13.1
+datasets>=2.8.0
+transformers>=4.25.1
+wandb>=0.13.9
