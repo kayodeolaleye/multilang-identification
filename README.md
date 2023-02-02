@@ -6,7 +6,7 @@ A list of SentenceTransformer pre-trained models can be found [here](https://www
 
 I specific used the [task-agnotic (English) pre-trained SentenceTransformer model](https://arxiv.org/pdf/2002.10957.pdf) to extract features from 100 documents per language and trained a single linear classifier on the extracted features.
 
-![Caption](architecture.pdf)
+![Caption](architecture.png)
 
 Figure: Architecture for the approach  pre-trained SentenceTransf
 
