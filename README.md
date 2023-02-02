@@ -30,19 +30,19 @@ python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
 
 #### Embeddings from pre-trained models: all-mini-LM-L6-v2 and all-mini-LM-L12-v2 respectively
 <p float="left">
-  <img src="results/all-MiniLM-L6-v2.png" width="45%"/>
-  <img src="results/all-MiniLM-L12-v2.png" width="45%"/>
+  <img src="results/all-MiniLM-L6-v2.png" width="50%"/>
+  <img src="results/all-MiniLM-L12-v2.png" width="50%"/>
 </p>
 
 #### Learning curves for the single Linear Classifier
 
 <p float="left">
-  <img src="results/validation_accuracy_curve.png" width="45%"/>
-  <img src="results/validation_loss_curve.png" width="45%"/>
+  <img src="results/validation_accuracy_curve.png" width="50%"/>
+  <img src="results/validation_loss_curve.png" width="50%"/>
 </p>
 <p float="left">
-  <img src="results/training_accuracy_curve.png" width="45%"/>
-  <img src="results/training_loss_curve.png" width="45%"/>
+  <img src="results/training_accuracy_curve.png" width="50%"/>
+  <img src="results/training_loss_curve.png" width="50%"/>
 </p>
 
 #### Performance on test set
