@@ -45,6 +45,8 @@ python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
   <img src="results/training_loss_curve.png" width="45%"/>
 </p>
 
+#### Performance on test set
+<img src="results/test_acc.png" width="100%"/>
 ### ToDo: Example Usage
 
 <p align="center">
@@ -57,7 +59,7 @@ Add code snippets for loading the model weights and assessing performance on tes
 ```    
 
 
-### Reference
+### References
 1. [MINILM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers](https://arxiv.org/pdf/2002.10957.pdf)
 2. [SentenceTransformers Pre-trained Models](https://www.sbert.net/docs/pretrained_models.html)
 3. [Language Identification Dataset](https://huggingface.co/datasets/papluca/language-identification)
