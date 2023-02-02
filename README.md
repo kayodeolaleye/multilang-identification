@@ -28,7 +28,7 @@ pip install -r requirements.txt
 python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
 ```
 
-#### Embeddings from pre-trained models: all-mini-LM-L6-v2 and (all-mini-LM-L12-v2 respectively
+#### Embeddings from pre-trained models: all-mini-LM-L6-v2 and all-mini-LM-L12-v2 respectively
 <p float="left">
   <img src="results/all-MiniLM-L6-v2.png" width="45%"/>
   <img src="results/all-MiniLM-L12-v2.png" width="45%"/>
@@ -55,3 +55,9 @@ Add code snippets for loading the model weights and assessing performance on tes
 ```python
 
 ```    
+
+
+### Reference
+[MINILM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers](https://arxiv.org/pdf/2002.10957.pdf)
+[SentenceTransformers Pre-trained Models](https://www.sbert.net/docs/pretrained_models.html)
+[Language Identification Dataset](https://huggingface.co/datasets/papluca/language-identification)
