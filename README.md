@@ -1,4 +1,4 @@
-#### Fine-tuning Sentence-Transformers for Multi-class Language Identification Task with PyTorch Lightning
+### Fine-tuning Sentence-Transformers for Multi-class Language Identification Task with PyTorch Lightning
 
 This repository is for language identification using [SentenceTransformer](https://www.sbert.net/index.html), a pre-trained transformer-based model for natural language processing. 
 
@@ -10,6 +10,7 @@ I specifically used the [task-agnotic (English) pre-trained SentenceTransformer 
 
 Figure: Architecture for the approach. A pre-trained SentenceTransformer transforms the documents and to train a single linear classifier.
 
+Python version: Python 3.10.8
 
 ## Example Usage
 
@@ -31,6 +32,7 @@ with torch.no_grad():
     wav, sr = vocoder.generate(mel)
 
 # save output
+```
 sf.write("path/to/save.wav", wav, sr)
 ```
 
@@ -38,7 +40,7 @@ sf.write("path/to/save.wav", wav, sr)
 
 1. Clone the repo:
 ```
-git clone gh repo clone kayodeolaleye/multilang-identification
+git clone kayodeolaleye/multilang-identification
 cd ./multilang-identification
 ```
 2. Install requirements:
@@ -47,5 +49,5 @@ pip install -r requirements.txt
 ```
 6. Train the model:
 ```
-python training.py --model_name all-MiniLM-L6-v2
+python training.py --model_name all-MiniLM-L6-v2 --epochs 1000 --batch_size 32
 ```
