@@ -8,7 +8,7 @@ I specifically used the [task-agnotic (English) pre-trained SentenceTransformer 
 
 ![Caption](architecture.png)
 
-Figure: Architecture for the approach. A pre-trained SentenceTransformer transforms the documents and to train a single linear classifier.
+Figure: Architecture for the approach. A pre-trained SentenceTransformer transforms the documents and the embeddings are used to train a single linear classifier.
 
 Python version: Python 3.10.8
 
